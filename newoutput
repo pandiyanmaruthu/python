@@ -1,0 +1,4 @@
+server=smtplib.SMTP("smtp.gmail.com",587)
+server.starttls()
+import smtplib
+message="Subject:{}\n\n{}".format(subject,msg)
