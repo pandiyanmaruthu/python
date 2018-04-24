@@ -74,6 +74,34 @@ def take_chip(chip):
                 continue
         break
 
+def hit(hand,deck):
+    hand.add_card(deck.deal())
+    hand.adjust_ace()
+
+def hit_or_stand(hand,deck):
+    global Playing
+    while True:
+        get_input=raw_input("Do you want ot hit/stand? : ").upper()
+        if get_input[0]=="H":
+            hit(hand,deck)
+        elif get_input[0]=="S":
+            print ("Player is standing..Now Dealer Play!!")
+            Playing=False
+        else:
+            print ("Please try again...")
+            continue
+        break
+def show_some(player,delear):
+    print ("Delear Card [*,{}]".format(delear.cards[1]))
+    print ("Dealear Value {}".format(delear.value))
+    print ("Player Card {}".format(player.cards))
+    print ("Player Value {}".format(player.value))
+
+def show_all(player,delear):
+    print ("Delear Card {}".format(delear.cards))
+    print ("Dealear Value {}".format(delear.value))
+    print ("Player Card {}".format(player.cards))
+    print ("Player Value {}".format(player.value))
 
 
 
@@ -93,3 +121,9 @@ print (myhand.cards)
 mychips=Chips()
 take_chip(mychips)
 print (mychips.bet)
+playerhand=Hand()
+playerdeck=Deck()
+hit(playerhand,playerdeck)
+hit(playerhand,playerdeck)
+print (playerhand.cards)
+print(playerhand.value)
