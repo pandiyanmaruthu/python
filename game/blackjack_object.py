@@ -98,37 +98,101 @@ def show_some(player,delear):
     print ("Player Value {}".format(player.value))
 
 
-def defshow_all(player, delear):
-    pass
-
-
 def show_all(player,delear):
     print ("Delear Card {}".format(delear.cards))
     print ("Dealear Value {}".format(delear.value))
     print ("Player Card {}".format(player.cards))
     print ("Player Value {}".format(player.value))
 
+def player_bust(player,delear,chips):
+    print ("Delear Won...")
+    chips.loss_chips()
+def player_won(player,delear,chips):
+    print ("Player Won...")
+    chips.won_chips()
+def dealer_won(player,delear,chips):
+    print ("Delear Won...")
+    chips.loss_chips()
+def dealer_bust(player,delear,chips):
+    print ("Player Won...")
+    chips.won_chips()
+def match_draw(player,delear):
+    print ("Match Draw")
+
+while True:
+    print (""""Welcome to black jack Game....Get as close as 21 don't go over 
+            Delear will hit until he reaches 17. Ace value is 1 or 11""")
+
+    deck=Deck()
+    deck.shuffle()
+    player_hand=Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+    player_hand.adjust_ace()
+
+    delear_hand=Hand()
+    delear_hand.add_card(deck.deal())
+    delear_hand.add_card(deck.deal())
+    delear_hand.adjust_ace()
+    player_chips=Chips()
+    take_chip(player_chips)
+    show_some(player_hand,delear_hand)
+    while Playing:
+        hit_or_stand(player_hand,deck)
+
+        show_some(player_hand,delear_hand)
+
+        if player_hand.value>21:
+            player_bust(player_hand,delear_hand,player_chips)
+            break
+    if player_hand.value<=21:
+        while delear_hand.value<17:
+            hit(delear_hand,deck)
+        show_all(player_hand,delear_hand)
+
+        if delear_hand.value>21:
+            dealer_bust(player_hand,delear_hand,player_chips)
+        elif delear_hand.value>player_hand.value:
+            player_bust(player_hand,delear_hand,player_chips)
+        elif player_hand.value>delear_hand.value:
+            player_won(player_hand,delear_hand,player_chips)
+        else:
+            match_draw(player_hand,delear_hand)
+    print ("Player's chips remaining: {}".format(player_chips.total))
+    again=raw_input("Do you want to play again!(Y/N): ").upper()
+    if again[0]=="Y":
+        Playing=True
+        continue
+    else:
+        import getpass
+        login=getpass.getuser()
+        print ("Thanks for Playing Black-Jack! {}".format(login))
+        break
 
 
-mycard=Deck()
-mycard.shuffle()
-# print (mycard)
-# print ("\n")
-# print (mycard.deal())
-myhand=Hand()
-myhand.add_card(mycard.deal())
-myhand.add_card(mycard.deal())
-myhand.adjust_ace()
-myhand.add_card(mycard.deal())
-myhand.adjust_ace()
-print (myhand.value)
-print (myhand.cards)
-mychips=Chips()
-take_chip(mychips)
-print (mychips.bet)
-playerhand=Hand()
-playerdeck=Deck()
-hit(playerhand,playerdeck)
-hit(playerhand,playerdeck)
-print (playerhand.cards)
-print(playerhand.value)
+
+
+
+
+# mycard=Deck()
+# mycard.shuffle()
+# # print (mycard)
+# # print ("\n")
+# # print (mycard.deal())
+# myhand=Hand()
+# myhand.add_card(mycard.deal())
+# myhand.add_card(mycard.deal())
+# myhand.adjust_ace()
+# myhand.add_card(mycard.deal())
+# myhand.adjust_ace()
+# print (myhand.value)
+# print (myhand.cards)
+# mychips=Chips()
+# take_chip(mychips)
+# print (mychips.bet)
+# playerhand=Hand()
+# playerdeck=Deck()
+# hit(playerhand,playerdeck)
+# hit(playerhand,playerdeck)
+# print (playerhand.cards)
+# print(playerhand.value)
