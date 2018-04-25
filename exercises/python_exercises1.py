@@ -97,7 +97,7 @@ import os
 print ("*------------------------*")
 print (os.environ)
 print (os.environ['HOME'])
-
+###print (os.environ)
 ## Get current Username
 import getpass
 print (getpass.getuser())
@@ -118,4 +118,5 @@ def myclac(n):
 n=20
 print ("Sum between 1 to",n,"and time taken is: ",myclac(n))
 print ((20*(20+1))/2)
-
+print ("added lines in master")
+ 
