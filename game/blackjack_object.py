@@ -97,6 +97,11 @@ def show_some(player,delear):
     print ("Player Card {}".format(player.cards))
     print ("Player Value {}".format(player.value))
 
+
+def defshow_all(player, delear):
+    pass
+
+
 def show_all(player,delear):
     print ("Delear Card {}".format(delear.cards))
     print ("Dealear Value {}".format(delear.value))
