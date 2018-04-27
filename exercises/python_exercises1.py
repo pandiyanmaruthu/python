@@ -128,6 +128,25 @@ def filedetails(filename):
     print ("File last modified on %s"%time.ctime(os.path.getmtime(filename)))
 
 filedetails("../game/blackjack_object.py")
+print (time.ctime(time.time()))
+
+def BMI():
+    height=float(input("Input your height in meters: "))
+    weight=int(input("Input your weight in kg: "))
+    print ("Your BMI is: ",round(weight/(height**2),2))
+BMI()
+import sys
+print ("System Copy-Right is: ", sys.copyright)
+print ("System Memory model is:",sys.byteorder)
+
+print (sys.builtin_module_names)
+print ("Size of file is : ",round(os.path.getsize("../game/blackjack_object.py")/1024,2))
+import datetime
+
+print (datetime.datetime.now())
+
+import socket
+print (socket.gethostname())
 
 
 

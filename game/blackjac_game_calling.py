@@ -1,4 +1,5 @@
 import blackjack_object
+import sys
 
 def start_play():
 
@@ -55,3 +56,6 @@ def start_play():
             login=getpass.getuser()
             print ("Thanks for Playing Black-Jack! {}".format(login))
             break
+start_play()
+print(sys.getsizeof(blackjack_object.Hand))
+print(sys.getsizeof(blackjack_object.take_chip))
