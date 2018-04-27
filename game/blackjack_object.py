@@ -1,3 +1,4 @@
+#!/usr/bin/python
 Suits=("Hearten","Diamond","Spade","Clever")
 ranks=("two","three","four","five","six","seven","eight","nine","ten","jack","queen","king","ace")
 values={"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,"ten":10,"jack":10,"queen":10,"king":10,"ace":11}
@@ -64,7 +65,7 @@ class Chips():
 def take_chip(chip):
     while True:
         try:
-            chip.bet=input("Please enter your bet amount: ")
+            chip.bet=int(input("Please enter your bet amount: "))
         except:
             print ("enter number...")
             continue
@@ -81,7 +82,7 @@ def hit(hand,deck):
 def hit_or_stand(hand,deck):
     global Playing
     while True:
-        get_input=raw_input("Do you want ot hit/stand? : ").upper()
+        get_input=input("Do you want ot hit/stand? : ").upper()
         if get_input[0]=="H":
             hit(hand,deck)
         elif get_input[0]=="S":
@@ -93,7 +94,6 @@ def hit_or_stand(hand,deck):
         break
 def show_some(player,delear):
     print ("Delear Card [*,{}]".format(delear.cards[1]))
-    print ("Dealear Value {}".format(delear.value))
     print ("Player Card {}".format(player.cards))
     print ("Player Value {}".format(player.value))
 
@@ -159,7 +159,7 @@ while True:
         else:
             match_draw(player_hand,delear_hand)
     print ("Player's chips remaining: {}".format(player_chips.total))
-    again=raw_input("Do you want to play again!(Y/N): ").upper()
+    again=input("Do you want to play again!(Y/N): ").upper()
     if again[0]=="Y":
         Playing=True
         continue
