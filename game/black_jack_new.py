@@ -165,3 +165,8 @@ while True:
 # print (deck_of_cards)
 # print (deck_of_cards.takecard())
 
+factors = lambda n: [x for x in range(1, n + 1) if not n % x]
+is_prime = lambda n: len(factors(n)) == 2
+primefactors = lambda n: list(filter(is_prime, factors(n)))
+
+
